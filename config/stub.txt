@@ -1,21 +1,13 @@
-read input:string(5)
-write join("A1V;B1V;C1V;D1V;E1V")
-
-STATEMENT
-Find opponents ships and sink them.
+read playerId:int
 
 INPUT
-input: Unused - Do not remove
-
-OUTPUT
-five ships in order of size, 5,4,3,3,2. A1V;B1V;C1V;D1V;E1V is a simple example.
+playerId: playerId (0,1)
 
 gameloop
-read response:string(5)
-write join("A1")
+read nbr:int
+loop nbr read command:string(20)
+
+write join("PLACE;A1")
 
 INPUT
-response: The result of your last move (M)iss (H)it (S)unk separated with ";" and the opponents guess.
-
-OUTPUT
-Next guess, one field like A1
+nbr: Number of valid moves proposed.

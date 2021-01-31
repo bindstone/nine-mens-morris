@@ -5,20 +5,20 @@ import java.util.Scanner;
 
 class Player {
 
-    Scanner in = new Scanner(System.in);
-    Random random = new Random(1);
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        Random random = new Random(1);
 
-    String playerId = in.next();
-        System.err.println(playerId);
+        String playerId = in.next();
 
         while (true) {
-        int mc = Integer.parseInt(in.next());
-        List<String> moves = new ArrayList<>();
-        for (int i = 0; i < mc; i++) {
-            moves.add(in.next());
+            int mc = Integer.parseInt(in.next());
+            List<String> moves = new ArrayList<>();
+            for (int i = 0; i < mc; i++) {
+                moves.add(in.next());
+            }
+            String move = moves.get(random.nextInt(moves.size()));
+            System.out.println(move);
         }
-        String move = moves.get(random.nextInt(moves.size()));
-        System.out.println(move);
     }
 }
-
