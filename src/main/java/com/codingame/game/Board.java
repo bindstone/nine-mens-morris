@@ -57,7 +57,7 @@ public class Board {
     List<String> getMoves(Player player) {
         STATE p = player.getIndex() == 0 ? PLAYER0 : PLAYER1;
         STATE op = player.getIndex() == 0 ? PLAYER1 : PLAYER0;
-        int stonecounts = player.getIndex() == 0 ? blackTake: whiteTake;
+        int stonecounts = player.getIndex() == 0 ? blackTake : whiteTake;
         List<FIELD> takable = getTakable(op);
         List<String> rtn = new ArrayList<>();
         if ((player.getIndex() == 0 && whitePlace < 9) ||
@@ -76,7 +76,7 @@ public class Board {
             }
         } else {
             // MOVE (JUMP)
-            if(stonecounts == 6) {
+            if (stonecounts == 6) {
                 for (int i = 0; i < 24; i++) {
                     if (p.equals(fields.get(i))) {
                         for (int j = 0; j < 24; j++) {
@@ -236,7 +236,7 @@ public class Board {
         for (FIELD[] combi : combos) {
             rtn = rtn || (
                     (combi[0] != fromField && combi[1] != fromField) &&
-                    (fields.get(combi[0].pos) == player && fields.get(combi[1].pos) == player));
+                            (fields.get(combi[0].pos) == player && fields.get(combi[1].pos) == player));
         }
         return rtn;
     }
@@ -295,6 +295,12 @@ public class Board {
                 if (PLACE_AND_TAKE.equals(action.command) && !isPlaceMill(action.f1, PLAYER0)) {
                     throw new InvalidAction("NO MILL FOR TAKEN");
                 }
+                if (PLACE_AND_TAKE.equals(action.command)) {
+                    List<FIELD> takable = getTakable(PLAYER1);
+                    if(!takable.contains(action.f2)) {
+                        throw new InvalidAction("STONE CANNOT BE TAKEN");
+                    }
+                }
             } else {
                 if (blackPlace > 8) {
                     throw new InvalidAction("NO PLACE MOVEMENTS POSSIBLE (All stones placed)");
@@ -304,6 +310,12 @@ public class Board {
                 }
                 if (PLACE_AND_TAKE.equals(action.command) && !isPlaceMill(action.f1, PLAYER1)) {
                     throw new InvalidAction("NO MILL FOR TAKEN");
+                }
+                if (PLACE_AND_TAKE.equals(action.command)) {
+                    List<FIELD> takable = getTakable(PLAYER0);
+                    if(!takable.contains(action.f2)) {
+                        throw new InvalidAction("STONE CANNOT BE TAKEN");
+                    }
                 }
             }
         }
@@ -327,6 +339,12 @@ public class Board {
                 if (MOVE_AND_TAKE.equals(action.command) && !isMoveMill(action.f1, action.f2, PLAYER0)) {
                     throw new InvalidAction("NO MILL FOR TAKEN");
                 }
+                if (PLACE_AND_TAKE.equals(action.command)) {
+                    List<FIELD> takable = getTakable(PLAYER1);
+                    if(!takable.contains(action.f3)) {
+                        throw new InvalidAction("STONE CANNOT BE TAKEN");
+                    }
+                }
             } else {
                 if (whiteTake < 6 && !Arrays.asList(MOVE_MAPPER.get(action.f1)).contains(action.f2)) {
                     throw new InvalidAction("INVALID MOVE (Field not in range)");
@@ -339,6 +357,12 @@ public class Board {
                 }
                 if (MOVE_AND_TAKE.equals(action.command) && !isMoveMill(action.f1, action.f2, PLAYER1)) {
                     throw new InvalidAction("NO MILL FOR TAKEN");
+                }
+                if (PLACE_AND_TAKE.equals(action.command)) {
+                    List<FIELD> takable = getTakable(PLAYER0);
+                    if(!takable.contains(action.f3)) {
+                        throw new InvalidAction("STONE CANNOT BE TAKEN");
+                    }
                 }
             }
         }
