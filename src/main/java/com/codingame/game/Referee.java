@@ -4,6 +4,7 @@ import com.codingame.gameengine.core.AbstractPlayer.TimeoutException;
 import com.codingame.gameengine.core.AbstractReferee;
 import com.codingame.gameengine.core.GameManager;
 import com.codingame.gameengine.core.MultiplayerGameManager;
+import com.codingame.gameengine.module.endscreen.EndScreenModule;
 import com.codingame.gameengine.core.Tooltip;
 import com.codingame.gameengine.module.entities.GraphicEntityModule;
 import com.codingame.gameengine.module.entities.Sprite;
@@ -18,6 +19,8 @@ public class Referee extends AbstractReferee {
     private MultiplayerGameManager<Player> gameManager;
     @Inject
     private GraphicEntityModule graphicEntityModule;
+    @Inject
+    private EndScreenModule endScreenModule;
     @Inject
     private Provider<Board> boardProvider;
 
@@ -135,6 +138,10 @@ public class Referee extends AbstractReferee {
                 gameManager.addTooltip(new Tooltip(player.getIndex(), "TAKE STONE"));
             }
 
+            if(turn == 200) {
+                setDraw(player, op);
+            }
+
             if (board.whiteTake > 6 || board.blackTake > 6) {
                 setWinner(player);
             }
@@ -159,6 +166,13 @@ public class Referee extends AbstractReferee {
         }
     }
 
+    private void setDraw(Player player, Player op) {
+        gameManager.addToGameSummary("DRAW after 200 Turns");
+        player.setScore(1);
+        op.setScore(1);
+        endGame();
+    }
+
     private void sendMoves(Player player, List<String> moves) {
         player.sendInputLine(String.valueOf(moves.size()));
         for (String move : moves) {
@@ -168,7 +182,7 @@ public class Referee extends AbstractReferee {
 
     private void setWinner(Player player) {
         gameManager.addToGameSummary(GameManager.formatSuccessMessage(player.getNicknameToken() + " won!"));
-        player.setScore(1);
+        player.setScore(2);
         endGame();
     }
 
@@ -183,5 +197,13 @@ public class Referee extends AbstractReferee {
         if (p0.getScore() < p1.getScore()) {
             p0.hud.setAlpha(0.3);
         }
+    }
+
+    @Override
+    public void onEnd() {
+        int[] scores = gameManager.getPlayers().stream().mapToInt(p -> p.getScore()).toArray();
+        String[] texts = {String.valueOf(scores[0]), String.valueOf(scores[1])};
+        endScreenModule.setTitleRankingsSprite("dddddd");
+        endScreenModule.setScores(scores, texts);
     }
 }
