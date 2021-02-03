@@ -4,8 +4,8 @@ import com.codingame.gameengine.core.AbstractPlayer.TimeoutException;
 import com.codingame.gameengine.core.AbstractReferee;
 import com.codingame.gameengine.core.GameManager;
 import com.codingame.gameengine.core.MultiplayerGameManager;
-import com.codingame.gameengine.module.endscreen.EndScreenModule;
 import com.codingame.gameengine.core.Tooltip;
+import com.codingame.gameengine.module.endscreen.EndScreenModule;
 import com.codingame.gameengine.module.entities.GraphicEntityModule;
 import com.codingame.gameengine.module.entities.Sprite;
 import com.codingame.gameengine.module.entities.Text;
@@ -138,7 +138,7 @@ public class Referee extends AbstractReferee {
                 gameManager.addTooltip(new Tooltip(player.getIndex(), "TAKE STONE"));
             }
 
-            if(turn == 200) {
+            if (turn == 200) {
                 setDraw(player, op);
             }
 
@@ -202,8 +202,10 @@ public class Referee extends AbstractReferee {
     @Override
     public void onEnd() {
         int[] scores = gameManager.getPlayers().stream().mapToInt(p -> p.getScore()).toArray();
+        int score0 = gameManager.getPlayers().get(0).getScore();
         String[] texts = {String.valueOf(scores[0]), String.valueOf(scores[1])};
-        endScreenModule.setTitleRankingsSprite("dddddd");
+        String end_png = score0 == 1 ? "end_draw.png" : score0 == 2 ? "end_player1.png" : "end_player2.png";
+        endScreenModule.setTitleRankingsSprite(end_png);
         endScreenModule.setScores(scores, texts);
     }
 }
