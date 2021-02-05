@@ -119,8 +119,8 @@ public class Referee extends AbstractReferee {
 
     @Override
     public void gameTurn(int turn) {
-        Player player = gameManager.getPlayer(turn % gameManager.getPlayerCount());
-        Player op = gameManager.getPlayer((turn + 1) % gameManager.getPlayerCount());
+        Player player = gameManager.getPlayer((turn + 1) % gameManager.getPlayerCount());
+        Player op = gameManager.getPlayer(turn % gameManager.getPlayerCount());
 
         if (turn == 1 || turn == 2) {
             player.sendInputLine(String.valueOf(player.getIndex()));
@@ -131,6 +131,7 @@ public class Referee extends AbstractReferee {
         }else {
             player.sendInputLine(board.opMove);
         }
+        player.sendInputLine(board.printBoard());
 
         sendMoves(player, board.getMoves(player));
 

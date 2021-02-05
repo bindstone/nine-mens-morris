@@ -13,11 +13,14 @@ class Player {
 
         while (true) {
             String lastMove = in.next();
+            String board = in.next();
+
             int mc = Integer.parseInt(in.next());
             List<String> moves = new ArrayList<>();
             for (int i = 0; i < mc; i++) {
                 moves.add(in.next());
             }
+
             String move = moves.get(random.nextInt(moves.size()));
             System.out.println(move);
         }

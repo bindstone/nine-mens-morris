@@ -368,5 +368,15 @@ public class Board {
             }
         }
     }
+
+    public String printBoard() {
+        List<String> pieces = new ArrayList<>();
+        for(int i = 0; i < 24; i++) {
+            FIELD field = FIELD.getField(i);
+            String player = fields.get(i) == PLAYER0 ? "0" : fields.get(i) == PLAYER1 ? "1" : "2";
+            pieces.add(field.name() + ":" + player );
+        }
+        return String.join(";", pieces);
+    }
 }
 

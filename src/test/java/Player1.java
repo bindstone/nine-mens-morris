@@ -15,6 +15,8 @@ public class Player1 {
         while (true) {
             String lastMove = in.next();
             System.err.println(lastMove);
+            String board = in.next();
+            System.err.println(board);
 
             int mc = Integer.parseInt(in.next());
             List<String> moves = new ArrayList<>();

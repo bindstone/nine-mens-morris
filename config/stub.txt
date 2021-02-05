@@ -5,10 +5,14 @@ playerId: playerId (0,1)
 
 gameloop
 read opMove:string(20)
+read board:string(100)
 read nbr:int
 loop nbr read command:string(20)
 
 write join("PLACE;A1")
 
 INPUT
+opMove: The last move executed from the opponent
+board: Current Board and state(0:Player0 | 1:Player1 | 2:Empty) in format field:state and separated by ;
 nbr: Number of valid moves proposed.
+command: An executable command line
