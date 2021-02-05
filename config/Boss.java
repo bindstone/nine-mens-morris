@@ -12,6 +12,7 @@ class Player {
         String playerId = in.next();
 
         while (true) {
+            String lastMove = in.next();
             int mc = Integer.parseInt(in.next());
             List<String> moves = new ArrayList<>();
             for (int i = 0; i < mc; i++) {

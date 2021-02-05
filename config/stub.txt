@@ -4,6 +4,7 @@ INPUT
 playerId: playerId (0,1)
 
 gameloop
+read opMove:string(20)
 read nbr:int
 loop nbr read command:string(20)
 

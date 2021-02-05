@@ -26,7 +26,6 @@ public class Action {
         this.player = player;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -50,5 +49,11 @@ public class Action {
                 (field1 == null ? "**invalid**" : field1) + " " +
                 (field2 == null ? "" : field2) + " " +
                 (field3 == null ? "" : field3)).trim();
+    }
+
+    public String move() {
+        return (command + ";" + field1 +
+                (field2 == null ? "" : (";" + field2)) +
+                (field3 == null ? "" : (";" + field3)));
     }
 }

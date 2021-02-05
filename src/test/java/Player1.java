@@ -13,6 +13,9 @@ public class Player1 {
         System.err.println(playerId);
 
         while (true) {
+            String lastMove = in.next();
+            System.err.println(lastMove);
+
             int mc = Integer.parseInt(in.next());
             List<String> moves = new ArrayList<>();
             for (int i = 0; i < mc; i++) {

@@ -13,6 +13,7 @@ import com.google.inject.Inject;
 import com.google.inject.Provider;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Referee extends AbstractReferee {
     @Inject
@@ -125,6 +126,12 @@ public class Referee extends AbstractReferee {
             player.sendInputLine(String.valueOf(player.getIndex()));
         }
 
+        if (Objects.isNull(board.opMove)) {
+            player.sendInputLine("-");
+        }else {
+            player.sendInputLine(board.opMove);
+        }
+
         sendMoves(player, board.getMoves(player));
 
         player.execute();
@@ -134,6 +141,7 @@ public class Referee extends AbstractReferee {
 
             board.validateAction(action);
             board.exec(action);
+            board.opMove = action.move();
             if (action.command.contains("TAKE")) {
                 gameManager.addTooltip(new Tooltip(player.getIndex(), "TAKE STONE"));
             }

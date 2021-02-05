@@ -33,6 +33,7 @@ public class Board {
     int blackTake = 0;
     int whiteTake = 0;
     int possibleMoves = 0;
+    String opMove;
 
     @Inject
     private GraphicEntityModule graphicEntityModule;
