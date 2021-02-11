@@ -9,6 +9,7 @@ import com.codingame.gameengine.module.endscreen.EndScreenModule;
 import com.codingame.gameengine.module.entities.GraphicEntityModule;
 import com.codingame.gameengine.module.entities.Sprite;
 import com.codingame.gameengine.module.entities.Text;
+import com.codingame.gameengine.module.toggle.ToggleModule;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
@@ -24,6 +25,8 @@ public class Referee extends AbstractReferee {
     private EndScreenModule endScreenModule;
     @Inject
     private Provider<Board> boardProvider;
+    @Inject
+    private ToggleModule toggleModule;
 
     private Board board;
 
@@ -51,12 +54,31 @@ public class Referee extends AbstractReferee {
 
         board = boardProvider.get();
 
+        toggleModule.displayOnToggleState(
+                graphicEntityModule
+                        .createSprite()
+                        .setImage("board.png")
+                        .setX(950)
+                        .setY(550)
+                        .setAnchor(0.5),
+                "debugToggle", false);
+        toggleModule.displayOnToggleState(
+                graphicEntityModule
+                        .createSprite()
+                        .setImage("board_dbg.png")
+                        .setX(950)
+                        .setY(550)
+                        .setAnchor(0.5),
+                "debugToggle", true);
+
+        /**
         graphicEntityModule
                 .createSprite()
                 .setImage("board.png")
                 .setX(950)
                 .setY(550)
                 .setAnchor(0.5);
+        **/
 
         graphicEntityModule
                 .createSprite()

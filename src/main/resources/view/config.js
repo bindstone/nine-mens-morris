@@ -1,5 +1,6 @@
 import { GraphicEntityModule } from './entity-module/GraphicEntityModule.js';
 import { EndScreenModule } from './endscreen-module/EndScreenModule.js';
+import { ToggleModule } from './toggle-module/ToggleModule.js'
 
 export const demo = {
   playerCount: 2,
@@ -97,7 +98,20 @@ export const playerColors = [
   '#22a1e4' // curious blue
 ];
 
+export const options = [
+    ToggleModule.defineToggle({
+        toggle: 'debugToggle',
+        title: 'DEBUG',
+        values: {
+            'ON': true,
+            'OFF': false
+        },
+        default: false
+    })
+];
+
 export const modules = [
 	GraphicEntityModule,
-    EndScreenModule
+    EndScreenModule,
+    ToggleModule
 ];
