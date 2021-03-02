@@ -199,8 +199,8 @@ public class Referee extends AbstractReferee {
 
     private void setDraw(Player player, Player op) {
         gameManager.addToGameSummary("DRAW after 200 Turns");
-        player.setScore(1);
-        op.setScore(1);
+        player.setScore(2);
+        op.setScore(2);
         endGame();
     }
 
@@ -213,7 +213,7 @@ public class Referee extends AbstractReferee {
 
     private void setWinner(Player player) {
         gameManager.addToGameSummary(GameManager.formatSuccessMessage(player.getNicknameToken() + " won!"));
-        player.setScore(2);
+        player.setScore(5);
         endGame();
     }
 
