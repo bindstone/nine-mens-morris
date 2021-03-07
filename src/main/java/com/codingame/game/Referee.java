@@ -235,7 +235,7 @@ public class Referee extends AbstractReferee {
         int[] scores = gameManager.getPlayers().stream().mapToInt(p -> p.getScore()).toArray();
         int score0 = gameManager.getPlayers().get(0).getScore();
         String[] texts = {String.valueOf(scores[0]), String.valueOf(scores[1])};
-        String end_png = score0 == 1 ? "end_draw.png" : score0 == 2 ? "end_player1.png" : "end_player2.png";
+        String end_png = score0 == 2 ? "end_draw.png" : score0 == 5 ? "end_player1.png" : "end_player2.png";
         endScreenModule.setTitleRankingsSprite(end_png);
         endScreenModule.setScores(scores, texts);
     }

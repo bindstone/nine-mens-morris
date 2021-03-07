@@ -24,7 +24,7 @@
             <span>The Goal</span>
         </h2>
         <div class="statement-goal-content">
-            Nine men's morris is a classical strategic board game, like checkers, chess...<br/>
+            Nine men's morris is a classical strategic board game, like checkers, chess...<br/><br/>
             Here a link to the <a href="https://en.wikipedia.org/wiki/Nine_men%27s_morris" target="_blank">Wikipedia</a> page.
         </div>
     </div>
@@ -36,7 +36,7 @@
         </h2>
         <div>
             <div class="statement-rules-content">
-                The game is based on a grid with on 24 fields organized on X-axes A..G and Y-axes 1..7
+                The game is based on a grid with 24 fields organized on X-axes A..G and Y-axes 1..7
                 <br/>
                 <img src="https://github.com/dartisan-lu/nine-mens-morris/raw/master/config/board1.png" width="250"
                      height="250" alt="Board 1">
@@ -44,21 +44,21 @@
                      height="250" alt="Board 2">
                 <br/>
                 <a href="https://en.wikipedia.org/wiki/Nine_men%27s_morris" target="_blank">Image Source
-                    Wikipedia</a> The second board is only to see as example for the fields, the lines are not corresponding the game nine men's morris<br/><br/>
+                    Wikipedia</a> The board on the right is meant to show the system of coordinates. The lines do not correspond to the game nine men's morris.<br/><br/>
                 The game has a Debug Mode, showing the field positions.<br/><br/>
                 The game is played in 3 phases:<br/><br/>
                 <ol>
-                    <li><b>Place stone</b> Each player has 9 stones, that are placed turn by turn and one per turn</li>
-                    <li><b>Move stone</b> When all stones are placed, the player can move one stone per turn and to one adjusting free field</li>
-                    <li><b>Flying</b> When a player has only 3 stones left, he can move his stone (one by turn) to any free field</li>
+                    <li><b>Place stone</b> Each player has 9 stones. The stones are placed on a free field once per round.</li>
+                    <li><b>Move stone</b> When all stones are placed, the player can move one stone per turn to an adjacent free field.</li>
+                    <li><b>Flying</b> When a player only has 3 stones left, he can move one of his stones to any free field.</li>
                 </ol>
-                <b>Capture</b> When by placement or movement a player form  a mill, means three of his stones in a vertical
-                or horizontal line, he must take an opponent stone this in prioritization, first an opponent free stone (not in a mill)
-                or when no free stone is available any stone.<br/><br/>
+                <b>Capture</b><br/>
+                When by placement or movement a player forms a mill, meaning three of his stones in a vertical or horizontal line,
+                he must take an opponent stone. Stones that are in a mill <b>can only be taken</b> when no other stones are available to capture.<br/><br/>
                 <b>Winning</b><br/>
-                The player who takes all but 2 stones from the opponent or hinder the opponent to do any move next turn, wins.<br/><br/>
+                The player who takes all but 2 stones from the opponent or prevents the opponent to do any move next turn, wins.<br/><br/>
                 <b>Draw</b><br/>
-                When after 200 movements no player has won, the game is declared draw.
+                When after 200 movements no player has won, the game is declared to be a draw.
             </div>
         </div>
     </div>
@@ -71,10 +71,10 @@
         <div>
             <div class="statement-rules-content">
                 <p><b>Mill</b></p>
-                A mill is an alignment of tree stones in vertical or horizontal by placing or moving a stone on a
-                previous empty field of the line.
-                When creating a mill, the player take a stone from the opponent. First only stones not forming a
-                mill are allowed to be taken.
+                A mill is an alignment of three stones in vertical or horizontal by placing or moving a stone on a
+                previously empty field of the line.<br/>
+                When creating a mill, the player takes a stone from the opponent. First, only stones not forming a
+                mill are allowed to be taken.<br/>
                 When all stones are bound in a mill, the player can take any stone of the opponent.
             </div>
             <br/>
@@ -84,8 +84,8 @@
                 ;
                 <const>field1</const>
                 <br/>
-                <i>PLACE</i>: The command to place a stone<br/>
-                <i>field1</i>: The field on the board to place the stone. It must be free. As Example A1<br/><br/>
+                <i>PLACE</i>: The command to place a stone.<br/>
+                <i>field1</i>: The field on the board to place the stone. It must be free. As example A1.<br/><br/>
                 <const>PLACE&TAKE</const>
                 ;
                 <const>field1</const>
@@ -93,8 +93,8 @@
                 <const>field2</const>
                 <br/>
                 <i>PLACE&TAKE</i>: The command to place a stone. This command has to be used when placing forms a mill.<br/>
-                <i>field1</i>: The field on the board to place the stone. It must be free. As Example A1<br/>
-                <i>field2</i>: The field on the board with the opponents stone to take. As Example A2<br/><br/>
+                <i>field1</i>: The field on the board to place the stone. It must be free. As example A1.<br/>
+                <i>field2</i>: The field on the board with the opponent's stone to take. As example A2.<br/><br/>
             </div>
             <div class="statement-rules-content">
                 <p><b>Move stone</b></p>
@@ -103,9 +103,9 @@
                 <const>field1</const>
                 ;
                 <const>field2</const><br/>
-                <i>MOVE</i>: The command to move a stone<br/>
-                <i>field1</i>: The field on the board containing the stone the player want to move. As Example A1<br/>
-                <i>field2</i>: The field on the board to move the stone to. It must be free and adjusting the field1. As Example D1<br/><br/>
+                <i>MOVE</i>: The command to move a stone.<br/>
+                <i>field1</i>: The field on the board containing the stone the player wants to move. As example A1.<br/>
+                <i>field2</i>: The field on the board to move the stone to. It must be a free and adjacent field. As example D1.<br/><br/>
                 <const>MOVE&TAKE</const>
                 ;
                 <const>field1</const>
@@ -116,9 +116,9 @@
                 <br/>
                 <i>MOVE&TAKE</i>: The command to move a stone. This command has to be used when moving forms a
                 mill.<br/>
-                <i>field1</i>: The field on the board containing the stone the player want to move. As Example A1<br/>
-                <i>field2</i>: The field on the board to move the stone to. It must be free and adjusting to field1. As Example D1<br/>
-                <i>field3</i>: The field on the board with the opponents stone to take. As Example A2<br/>
+                <i>field1</i>: The field on the board containing the stone the player wants to move. As example A1.<br/>
+                <i>field2</i>: The field on the board to move the stone to. It must be free and adjusting to field1. As example D1.<br/>
+                <i>field3</i>: The field on the board with the opponent's stone to take. As example A2.<br/>
             </div>
             <div class="statement-rules-content"><br/>
                 <p><b>Flying</b></p>
@@ -127,9 +127,9 @@
                 <const>field1</const>
                 ;
                 <const>field2</const><br/>
-                <i>MOVE</i>: The command to move a stone<br/>
-                <i>field1</i>: The field on the board containing the stone the player want to move. As Example A1<br/>
-                <i>field2</i>: The field on the board to move the stone to. It can be any field on the board but it must be free. As Example D1<br/><br/>
+                <i>MOVE</i>: The command to move a stone.<br/>
+                <i>field1</i>: The field on the board containing the stone the player wants to move. As example A1.<br/>
+                <i>field2</i>: The field on the board to move the stone to. It can be any field on the board but it must be free. As example D1.<br/><br/>
                 <const>MOVE&TAKE</const>
                 ;
                 <const>field1</const>
@@ -140,9 +140,9 @@
                 <br/>
                 <i>MOVE&TAKE</i>: The command to move a stone. This command has to be used when moving forms a
                 mill.<br/>
-                <i>field1</i>: The field on the board containing the stone the player want to move. As Example A1<br/>
-                <i>field2</i>: The field on the board to move the stone to. It can be any field on the board but it must be free. As Example D1<br/>
-                <i>field3</i>: The field on the board with the opponents stone to take. As Example A2<br/>
+                <i>field1</i>: The field on the board containing the stone the player wants to move. As example A1.<br/>
+                <i>field2</i>: The field on the board to move the stone to. It can be any free field on the board. As example D1.<br/>
+                <i>field3</i>: The field on the board with the opponent's stone to take. As example A2.<br/>
             </div>
         </div>
         <br/>
@@ -168,12 +168,12 @@
                 <div class="text"><span class="statement-lineno">Line 1:</span>
                     <var>opMove</var>
                     <const>String</const>
-                    Last move of opponent. In case of no move yet done, it returns -
+                    Last move of the opponent. In case of no move yet done, it returns -
                 </div>
                 <div class="text"><span class="statement-lineno">Line 2:</span>
                     <var>board</var>
                     <const>String</const>
-                    Current Board, field and state(0:Player0 | 1:Player1 | 2:Empty) in format <var>field</var>:<var>state</var>
+                    Current Board, field and state(0:Player0 | 1:Player1 | 2:Empty) in format <var>field</var>: <var>state</var>
                     separated by ;
                 </div>
                 <div class="text"><span class="statement-lineno">Line 3:</span>
@@ -219,14 +219,14 @@
                 <div class="title">Loss Conditions</div>
                 <div class="text">
                     <ul style="padding-bottom:0">
-                        <li>Not responding in time (50ms)</li>
-                        <li>Provide a invalid command</li>
-                        <li>Provide a invalid move or field (invalid stone selected, invalid target field provided)</li>
-                        <li>Capture a wrong stone, or not capturing when forming a mill</li>
+                        <li>Not responding in time (50ms).</li>
+                        <li>Provide an invalid command.</li>
+                        <li>Provide an invalid move or field (invalid stone selected, invalid target field provided).</li>
+                        <li>Capture a wrong stone, or not capturing when forming a mill.</li>
                     </ul>
                 </div>
                 <div class="text">
-                    When after 200 moves no one has won, the game is declared draw
+                    When after 200 moves no one has won, the game is declared a draw.
                 </div>
             </div>
         </div>
