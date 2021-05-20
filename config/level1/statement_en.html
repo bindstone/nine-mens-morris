@@ -33,21 +33,29 @@
         <div>
             <div class="statement-rules-content">
                 The game is based on a grid with 24 fields organized on X-axes A..G and Y-axes 1..7
-                <br/>
+                <br/><br/>
                 <img src="https://github.com/bindstone/nine-mens-morris/raw/master/config/board1.png" width="500" height="250" alt="Board">
                 <br/><br/>
-                The game has a Debug mode. In Debug the field positions are shown.<br/><br/>
+                In Debug the field positions are shown on the board.<br/><br/>
                 The game is played in 3 phases:<br/>
                 <ol>
-                    <li><b>Place stone</b> Each player has 9 stones. On each turn a player places one stone on a vacant field.</li>
-                    <li><b>Move stone</b> When all 18 stones are placed, the player can move one stone/round to an adjacent vacant field.</li>
+                    <li><b>Place stone</b> Each player has 9 stones. On each turn a player places one stone on a vacant field.</li><br/>
+                    <li><b>Move stone</b> When all 18 stones are placed, the player can move one stone/round to an adjacent vacant field.</li><br/>
                     <li><b>Flying</b> Once a player has only three pieces left, he can move a stone to any vacant position on the board and not just to an adjacent vacant field.</li>
                 </ol>
                 <b>Capture</b><br/>
-                In case a player forms a mill with a placement or movement, he must take an opponent stone.
+                When a player forms a mill with a placement or movement, he must take an opponent stone.
                 A mill means three stones from the player  forms a vertical or horizontal line.<br/>
-                When forming a mill, the player take a stone from the opponent. First only stones not in a
-                mill can be taken. When all opponent stones are in a mill, the player can take any stone.
+                <div>
+                    <div>
+                        <img src="https://github.com/bindstone/nine-mens-morris/raw/master/config/mill1.png" width="500" height="250" alt="mill_horizontal">
+                    </div>
+                    <div>
+                        <img src="https://github.com/bindstone/nine-mens-morris/raw/master/config/mill2.png" width="500" height="250" alt="mill_vertical">
+                    </div>
+                </div>
+                The order to take a stone is first only stones not in a mill.
+                When all opponent stones are in a mill, the player can take any stone.
                 <br/><br/>
                 <b>Winning</b><br/>
                 The player who takes all but 2 stones from the opponent or prevents the opponent to do a move next turn, wins.<br/><br/>
