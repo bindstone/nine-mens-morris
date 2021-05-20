@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Player1 {
 
@@ -23,8 +20,12 @@ public class Player1 {
             for (int i = 0; i < mc; i++) {
                 moves.add(in.next());
             }
-            String move = moves.get(random.nextInt(moves.size()));
-            System.out.println(move);
+            Optional<String> take = moves.stream().filter(s -> s.contains("TAKE")).findFirst();
+            if (take.isPresent()) {
+                System.out.println(take.get());
+            } else {
+                System.out.println(moves.get(0));
+            }
         }
     }
 }

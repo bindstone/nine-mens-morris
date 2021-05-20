@@ -21,8 +21,12 @@ class Player {
                 moves.add(in.next());
             }
 
-            String move = moves.get(random.nextInt(moves.size()));
-            System.out.println(move);
+            Optional<String> take = moves.stream().filter(s -> s.contains("TAKE")).findFirst();
+            if (take.isPresent()) {
+                System.out.println(take.get());
+            } else {
+                System.out.println(moves.get(0));
+            }
         }
     }
 }
