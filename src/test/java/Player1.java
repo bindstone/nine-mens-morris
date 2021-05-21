@@ -4,7 +4,6 @@ public class Player1 {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        Random random = new Random(1);
 
         String playerId = in.next();
         System.err.println(playerId);

@@ -1,13 +1,9 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 class Player {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        Random random = new Random(1);
 
         String playerId = in.next();
 

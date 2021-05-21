@@ -184,15 +184,18 @@ public class Referee extends AbstractReferee {
         } catch (NumberFormatException e) {
             player.deactivate("Wrong output!");
             player.setScore(-1);
+            op.setScore(5);
             endGame();
         } catch (TimeoutException e) {
             gameManager.addToGameSummary(GameManager.formatErrorMessage(player.getNicknameToken() + " timeout!"));
             player.deactivate(player.getNicknameToken() + " timeout!");
             player.setScore(-1);
+            op.setScore(5);
             endGame();
         } catch (InvalidAction e) {
             player.deactivate(e.getMessage());
             player.setScore(-1);
+            op.setScore(5);
             endGame();
         }
     }
