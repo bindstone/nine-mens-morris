@@ -23,6 +23,9 @@ public class Player2 {
             for (int i = 0; i < mc; i++) {
                 moves.add(in.next());
             }
+            try {
+                Thread.sleep(48);
+            }catch(Exception e) {}
             String move = moves.get(random.nextInt(moves.size()));
             System.out.println(move);
         }
