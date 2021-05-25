@@ -8,6 +8,11 @@ public class Player1 {
         String playerId = in.next();
         System.err.println(playerId);
 
+        int fields = in.nextInt();
+        for (int i = 0;i < fields; i++) {
+            System.err.println(in.next());
+        }
+
         while (true) {
             String lastMove = in.next();
             System.err.println(lastMove);

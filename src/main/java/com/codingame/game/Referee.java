@@ -1,5 +1,7 @@
 package com.codingame.game;
 
+import com.codingame.game.constants.MillMap;
+import com.codingame.game.constants.MoveMap;
 import com.codingame.gameengine.core.AbstractPlayer.TimeoutException;
 import com.codingame.gameengine.core.AbstractReferee;
 import com.codingame.gameengine.core.GameManager;
@@ -13,8 +15,11 @@ import com.codingame.gameengine.module.toggle.ToggleModule;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Referee extends AbstractReferee {
     @Inject
@@ -70,15 +75,6 @@ public class Referee extends AbstractReferee {
                         .setY(550)
                         .setAnchor(0.5),
                 "debugToggle", true);
-
-        /**
-        graphicEntityModule
-                .createSprite()
-                .setImage("board.png")
-                .setX(950)
-                .setY(550)
-                .setAnchor(0.5);
-        **/
 
         graphicEntityModule
                 .createSprite()
@@ -146,6 +142,18 @@ public class Referee extends AbstractReferee {
 
         if (turn == 1 || turn == 2) {
             player.sendInputLine(String.valueOf(player.getIndex()));
+            player.sendInputLine("24");
+            List<String> board = new ArrayList<>();
+            MoveMap.MOVE_MAPPER.forEach((f, n) -> {
+                String neighbors = Arrays.stream(n)
+                        .map(Enum::toString)
+                        .sorted()
+                        .collect(Collectors.joining(";"));
+                String line = f.toString() + ":" + neighbors;
+                board.add(line);
+            });
+            board.sort(String::compareTo);
+            board.forEach(x -> player.sendInputLine(x));
         }
 
         if (Objects.isNull(board.opMove)) {

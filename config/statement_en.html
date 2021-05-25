@@ -103,7 +103,7 @@
                 <i>MOVE</i>: Command to move a stone.<br/>
                 <i>field1</i>: Field on the board containing the stone the player wants to move.<br/>
                 <i>field2</i>: Field on the board to move the stone to. It must be a vacant and adjacent field.<br/>
-                <i>example</i>: MOVE;A1;D1<br/>
+                <i>example</i>: MOVE;A1;D1<br/><br/>
                 <const>MOVE&TAKE</const>
                 ;
                 <const>field1</const>
@@ -111,7 +111,7 @@
                 <const>field2</const>
                 ;
                 <const>field3</const>
-                <br/><br/>
+                <br/>
                 <i>MOVE&TAKE</i>: Command to move a stone with mill. This command must be used when moving and forming a mill.<br/>
                 <i>field1</i>: Field on the board containing the stone the player wants to move.<br/>
                 <i>field2</i>: Field on the board to move the stone to. It must be vacant and adjusting to field1.<br/>
@@ -156,13 +156,24 @@
             <!-- Protocol block -->
             <div class="blk">
                 <div class="title">Initialization Input</div>
-                <div class="text">
-                    <span class="statement-lineno"></span>
-                    <const>playerId</const>
+                <div class="text"><span class="statement-lineno">First line</span>
+                    <var>playerId</var>
+                    <const>Int</const>
                     Integer value for playerId (0,1)
+                </div>
+                <div class="text"><span class="statement-lineno">Next line</span>
+                    <var>fields</var>
+                    <const>Int</const>
+                    number of fields (24) on the board
+                </div>
+                <div class="text"><span class="statement-lineno">Next X lines (fields)</span>
+                    <var>neighbors</var>
+                    <const>String</const>
+                    One field per line in in format: field ":" and it's adjusting fields separated with ";" as example: A1:A4;D1
                 </div>
                 <br/>
             </div>
+            <br/>
             <div class="blk">
                 <div class="title">Input for one game turn</div>
                 <div class="text"><span class="statement-lineno">First line</span>

@@ -12,6 +12,11 @@ public class Player2 {
         String playerId = in.next();
         System.err.println(playerId);
 
+        int fields = in.nextInt();
+        for (int i = 0;i < fields; i++) {
+            System.err.println(in.next());
+        }
+
         while (true) {
             String lastMove = in.next();
             System.err.println(lastMove);
@@ -24,7 +29,7 @@ public class Player2 {
                 moves.add(in.next());
             }
             try {
-                Thread.sleep(48);
+                Thread.sleep(40);
             }catch(Exception e) {}
             String move = moves.get(random.nextInt(moves.size()));
             System.out.println(move);

@@ -1,7 +1,11 @@
 read playerId:int
+read fields:int
+loop fields read neighbors:string(20)
 
 INPUT
 playerId: playerId (0,1)
+fields: number of fields
+neighbors: neighbors of a field (ex: A1:A4;D1)
 
 gameloop
 read opMove:string(20)
