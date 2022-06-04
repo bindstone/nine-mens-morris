@@ -340,7 +340,7 @@ public class Board {
                 if (MOVE_AND_TAKE.equals(action.command) && !isMoveMill(action.f1, action.f2, PLAYER0)) {
                     throw new InvalidAction("NO MILL FOR TAKEN");
                 }
-                if (PLACE_AND_TAKE.equals(action.command)) {
+                if (MOVE_AND_TAKE.equals(action.command)) {
                     List<FIELD> takable = getTakable(PLAYER1);
                     if(!takable.contains(action.f3)) {
                         throw new InvalidAction("STONE CANNOT BE TAKEN");
@@ -359,7 +359,7 @@ public class Board {
                 if (MOVE_AND_TAKE.equals(action.command) && !isMoveMill(action.f1, action.f2, PLAYER1)) {
                     throw new InvalidAction("NO MILL FOR TAKEN");
                 }
-                if (PLACE_AND_TAKE.equals(action.command)) {
+                if (MOVE_AND_TAKE.equals(action.command)) {
                     List<FIELD> takable = getTakable(PLAYER0);
                     if(!takable.contains(action.f3)) {
                         throw new InvalidAction("STONE CANNOT BE TAKEN");
